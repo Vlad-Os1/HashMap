@@ -111,15 +111,3 @@ class HashMap {
     console.log('i am pretty BIG NOW :)');
   }
 }
-
-let hm = new HashMap(16);
-console.log(hm.set('rock', 'stone'));
-console.log(hm.set('rock', 'and stone'));
-console.log(hm.set('WW', 'Say my name'));
-console.log(hm.keys());
-console.log(hm.values());
-console.log(hm.entries());
-// console.log(hm.length());
-// console.log(hm.clear());
-// console.log(hm.remove('WW'));
-// console.log(hm.buckets);
