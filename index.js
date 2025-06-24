@@ -69,6 +69,44 @@ class HashMap {
     return false;
   }
 
+  length() {
+    return this.count;
+  }
+
+  clear() {
+    return (this.buckets = Array.from({ length: this.size }, () => []));
+  }
+
+  keys() {
+    let arr = [];
+    for (let bucket of this.buckets) {
+      for (let [key] of bucket) {
+        arr.push(key);
+      }
+    }
+    return arr;
+  }
+
+  values() {
+    let arr = [];
+    for (let bucket of this.buckets) {
+      for (let [key, value] of bucket) {
+        arr.push(value);
+      }
+    }
+    return arr;
+  }
+
+  entries() {
+    let arr = [];
+    for (let bucket of this.buckets) {
+      for (let [key, value] of bucket) {
+        arr.push([key, value]);
+      }
+    }
+    return arr;
+  }
+
   _resize() {
     console.log('i am pretty BIG NOW :)');
   }
@@ -78,5 +116,10 @@ let hm = new HashMap(16);
 console.log(hm.set('rock', 'stone'));
 console.log(hm.set('rock', 'and stone'));
 console.log(hm.set('WW', 'Say my name'));
-console.log(hm.remove('WW'));
-console.log(hm.buckets);
+console.log(hm.keys());
+console.log(hm.values());
+console.log(hm.entries());
+// console.log(hm.length());
+// console.log(hm.clear());
+// console.log(hm.remove('WW'));
+// console.log(hm.buckets);
