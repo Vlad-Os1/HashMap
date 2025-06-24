@@ -1,4 +1,4 @@
-class HashMap {
+export default class HashMap {
   constructor(size = 16) {
     this.buckets = Array.from({ length: size }, () => []);
     this.size = size;
@@ -27,7 +27,7 @@ class HashMap {
     }
     bucket.push([key, value]);
     this.count++;
-    if (this.count / this.size >= 0.75) {
+    if (this.count / this.size > 0.75) {
       this._resize();
     }
     return this.buckets;
@@ -108,6 +108,15 @@ class HashMap {
   }
 
   _resize() {
+    let oldBuckets = this.buckets;
+    this.size *= 2;
+    this.count = 0;
+    this.buckets = Array.from({ length: this.size }, () => []);
+    for (let bucket of oldBuckets) {
+      for (let [key, value] of bucket) {
+        this.set(key, value);
+      }
+    }
     console.log('i am pretty BIG NOW :)');
   }
 }
