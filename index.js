@@ -1,6 +1,6 @@
 export default class HashMap {
   constructor(size = 16) {
-    this.buckets = Array.from({ length: size }, () => []);
+    this.buckets = Array.from({ length: size }, () => []); // creates an array of 'size' empty arrays e.g., [[], [], [],...]
     this.size = size;
     this.count = 0; // to track the load factor
   }
@@ -20,6 +20,7 @@ export default class HashMap {
     let bucket = this.buckets[index];
 
     for (let pair of bucket) {
+      // If the current pair's key matches the given key, update its value
       if (pair[0] === key) {
         pair[1] = value;
         return this.buckets;
@@ -117,6 +118,5 @@ export default class HashMap {
         this.set(key, value);
       }
     }
-    console.log('i am pretty BIG NOW :)');
   }
 }
